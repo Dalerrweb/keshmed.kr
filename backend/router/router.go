@@ -22,4 +22,7 @@ func Initalize(router *fiber.App) {
 	products.Patch("/:id", handlers.UpdateProduct)
 	products.Get("/:id", handlers.GetProductById)
 	products.Delete("/:id", handlers.DeleteProduct)
+
+	upload := router.Group("/api/upload", middleware.ProtectRoute())
+	upload.Post("/", handlers.UploadImage)
 }
