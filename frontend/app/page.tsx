@@ -11,8 +11,10 @@ import {
 import { Star, Zap, Award, Globe, Send, MessageCircle } from "lucide-react";
 import ProductList from "@/components/productList";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
+	const t = useTranslations("homePage");
 	return (
 		<main className="flex-1">
 			{/* Hero Section */}
@@ -26,13 +28,14 @@ export default function Home() {
 				<div className="absolute inset-0 bg-black/50" />
 				<div className="relative z-10 space-y-4">
 					<h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl">
-						Your Trusted Source for Advanced Medical Equipment from
-						South Korea
+						{t("greeting.title")}
 					</h1>
 					<div className="flex justify-center space-x-4">
-						<Button size="lg">Explore Products</Button>
+						<Button size="lg">
+							{t("greeting.buttons.exploreProducts")}
+						</Button>
 						<Button size="lg" variant="outline">
-							Contact Sales
+							{t("greeting.buttons.contactSales")}
 						</Button>
 					</div>
 				</div>
@@ -42,7 +45,7 @@ export default function Home() {
 			<section id="products" className="py-16 bg-gray-50">
 				<div className="container">
 					<h2 className="text-3xl font-bold text-center mb-8">
-						Featured Products
+						{t("featuredProducts.title")}
 					</h2>
 					<ProductList />
 				</div>
@@ -52,18 +55,19 @@ export default function Home() {
 			<section id="why-choose-us" className="py-16">
 				<div className="container">
 					<h2 className="text-3xl font-bold text-center mb-8">
-						Why Choose Us
+						{t("whyChooseUs.title")}
 					</h2>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 						<Card>
 							<CardContent className="p-6 text-center">
 								<Zap className="w-12 h-12 mx-auto mb-4 text-primary" />
 								<h3 className="text-xl font-semibold mb-2">
-									Cutting-Edge Technology
+									{t("whyChooseUs.items.cuttingEdge.title")}
 								</h3>
 								<p className="text-gray-600">
-									We offer the latest advancements in medical
-									technology from South Korea.
+									{t(
+										"whyChooseUs.items.cuttingEdge.description"
+									)}
 								</p>
 							</CardContent>
 						</Card>
@@ -71,11 +75,14 @@ export default function Home() {
 							<CardContent className="p-6 text-center">
 								<Award className="w-12 h-12 mx-auto mb-4 text-primary" />
 								<h3 className="text-xl font-semibold mb-2">
-									Certified Quality Standards
+									{t(
+										"whyChooseUs.items.certifiedQuality.title"
+									)}
 								</h3>
 								<p className="text-gray-600">
-									All our products meet rigorous international
-									quality standards.
+									{t(
+										"whyChooseUs.items.certifiedQuality.description"
+									)}
 								</p>
 							</CardContent>
 						</Card>
@@ -83,11 +90,14 @@ export default function Home() {
 							<CardContent className="p-6 text-center">
 								<Globe className="w-12 h-12 mx-auto mb-4 text-primary" />
 								<h3 className="text-xl font-semibold mb-2">
-									Global Shipping & Support
+									{t(
+										"whyChooseUs.items.globalShipping.title"
+									)}
 								</h3>
 								<p className="text-gray-600">
-									We provide worldwide shipping and
-									comprehensive customer support.
+									{t(
+										"whyChooseUs.items.globalShipping.description"
+									)}
 								</p>
 							</CardContent>
 						</Card>
@@ -99,7 +109,7 @@ export default function Home() {
 			<section id="testimonials" className="py-16 bg-gray-50">
 				<div className="container">
 					<h2 className="text-3xl font-bold text-center mb-8">
-						What Our Customers Say
+						{t("customerReviews.title")}
 					</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 						{[...Array(4)].map((_, i) => (
@@ -144,20 +154,13 @@ export default function Home() {
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
 						<div>
 							<h2 className="text-3xl font-bold mb-4">
-								About KeshMed
+								{t("aboutUs.title")}
 							</h2>
 							<p className="text-gray-600 mb-4">
-								KeshMed is your trusted partner in advanced
-								medical equipment from South Korea. We are
-								committed to bringing cutting-edge technology
-								and unparalleled quality to healthcare
-								professionals worldwide.
+								{t("aboutUs.description")}
 							</p>
 							<p className="text-gray-600">
-								Our mission is to improve patient care and
-								medical outcomes by providing access to the most
-								innovative and reliable medical devices
-								available in the market.
+								{t("aboutUs.mission")}
 							</p>
 						</div>
 						<div className="aspect-video relative">
@@ -175,7 +178,7 @@ export default function Home() {
 			<section className="py-16 bg-gray-50">
 				<div className="container">
 					<h2 className="text-3xl font-bold text-center mb-8">
-						Frequently Asked Questions
+						{t("faqs.title")}
 					</h2>
 					<Accordion type="single" collapsible className="w-full">
 						<AccordionItem value="item-1">
@@ -228,15 +231,18 @@ export default function Home() {
 			<section className="py-16">
 				<div className="container text-center">
 					<h2 className="text-3xl font-bold mb-4">
-						Ready to Equip Your Practice with the Best?
+						{t("callToAction.title")}
 					</h2>
 					<p className="text-xl text-gray-600 mb-8">
-						Start Shopping Today!
+						{t("callToAction.subtitle")}
 					</p>
 					<div className="flex justify-center space-x-4">
-						<Button size="lg">Browse Products</Button>
+						<Button size="lg">
+							{" "}
+							{t("callToAction.buttons.browseProducts")}
+						</Button>
 						<Button size="lg" variant="outline">
-							Get in Touch
+							{t("callToAction.buttons.getInTouch")}
 						</Button>
 					</div>
 				</div>
@@ -246,13 +252,13 @@ export default function Home() {
 			<section id="contact" className="py-16 bg-gray-50">
 				<div className="container">
 					<h2 className="text-3xl font-bold text-center mb-8">
-						Contact Us
+						{t("contactUs.title")}
 					</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 						<Card>
 							<CardContent className="p-6">
 								<h3 className="text-xl font-semibold mb-4">
-									Send us a message
+									{t("contactUs.messageForm.title")}
 								</h3>
 								<form className="space-y-4">
 									<Input placeholder="Your Name" />
@@ -261,14 +267,16 @@ export default function Home() {
 										placeholder="Your Email"
 									/>
 									<Textarea placeholder="Your Message" />
-									<Button type="submit">Send Message</Button>
+									<Button type="submit">
+										{t("contactUs.messageForm.sendButton")}
+									</Button>
 								</form>
 							</CardContent>
 						</Card>
 						<Card>
 							<CardContent className="p-6">
 								<h3 className="text-xl font-semibold mb-4">
-									Our Location
+									{t("contactUs.location.title")}
 								</h3>
 								<div className="aspect-video relative mb-4">
 									<iframe

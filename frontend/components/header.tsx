@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import LanguageSwitcher from "./languageSwitcher";
 
 export default function Header() {
 	return (
@@ -54,7 +55,7 @@ export default function Header() {
 							/>
 						</div>
 					</div>
-					<Button>Shop Now</Button>
+					<LanguageSwitcher />
 				</div>
 			</div>
 		</header>

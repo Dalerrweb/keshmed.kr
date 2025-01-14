@@ -1,0 +1,62 @@
+{
+	"homePage": {
+		"greeting": {
+			"title": "Your Trusted Source for Advanced Medical Equipment from South Korea",
+			"buttons": {
+				"exploreProducts": "Explore Products",
+				"contactSales": "Contact Sales"
+			}
+		},
+		"featuredProducts": {
+			"title": "Featured Products"
+		},
+		"whyChooseUs": {
+			"title": "Why Choose Us",
+			"items": {
+				"cuttingEdge": {
+					"title": "Cutting-Edge Technology",
+					"description": "We offer the latest advancements in medical technology from South Korea."
+				},
+				"certifiedQuality": {
+					"title": "Certified Quality Standards",
+					"description": "All our products meet rigorous international quality standards."
+				},
+				"globalShipping": {
+					"title": "Global Shipping & Support",
+					"description": "We provide worldwide shipping and comprehensive customer support."
+				}
+			}
+		},
+		"customerReviews": {
+			"title": "What Our Customers Say",
+			"reviews": []
+		},
+		"aboutUs": {
+			"title": "About KeshMed",
+			"description": "KeshMed is your trusted partner in advanced medical equipment from South Korea. We are committed to bringing cutting-edge technology and unparalleled quality to healthcare professionals worldwide.",
+			"mission": "Our mission is to improve patient care and medical outcomes by providing access to the most innovative and reliable medical devices available in the market."
+		},
+		"faqs": {
+			"title": "Frequently Asked Questions",
+			"questions": []
+		},
+		"callToAction": {
+			"title": "Ready to Equip Your Practice with the Best?",
+			"subtitle": "Start Shopping Today!",
+			"buttons": {
+				"browseProducts": "Browse Products",
+				"getInTouch": "Get in Touch"
+			}
+		},
+		"contactUs": {
+			"title": "About KeshMed",
+			"messageForm": {
+				"title": "Send us a message",
+				"sendButton": "Send Message"
+			},
+			"location": {
+				"title": "Our Location"
+			}
+		}
+	}
+}

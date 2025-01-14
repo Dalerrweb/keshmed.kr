@@ -1,0 +1,62 @@
+{
+	"homePage": {
+		"greeting": {
+			"title": "Janubiy Koreyadan ilg‘or tibbiy jihozlar bo‘yicha ishonchli manba",
+			"buttons": {
+				"exploreProducts": "Mahsulotlarni ko‘rib chiqing",
+				"contactSales": "Savdo bilan bog‘laning"
+			}
+		},
+		"featuredProducts": {
+			"title": "Tavsiya etilgan mahsulotlar"
+		},
+		"whyChooseUs": {
+			"title": "Nima uchun bizni tanlashingiz kerak?",
+			"items": {
+				"cuttingEdge": {
+					"title": "Ilg‘or texnologiyalar",
+					"description": "Janubiy Koreyadagi eng so‘nggi tibbiy texnologiyalarni taqdim etamiz."
+				},
+				"certifiedQuality": {
+					"title": "Sertifikatlangan sifat standartlari",
+					"description": "Bizning barcha mahsulotlarimiz qat’iy xalqaro sifat standartlariga javob beradi."
+				},
+				"globalShipping": {
+					"title": "Butun dunyo bo‘ylab yetkazib berish va qo‘llab-quvvatlash",
+					"description": "Biz butun dunyoga yetkazib berish va to‘liq mijozlarni qo‘llab-quvvatlashni taqdim etamiz."
+				}
+			}
+		},
+		"customerReviews": {
+			"title": "Mijozlarimiz nima deydi",
+			"reviews": []
+		},
+		"aboutUs": {
+			"title": "KeshMed haqida",
+			"description": "KeshMed — Janubiy Koreyadan ilg‘or tibbiy jihozlar bo‘yicha ishonchli hamkoringiz. Biz sog‘liqni saqlash sohasidagi mutaxassislarga ilg‘or texnologiya va mukammal sifatni taqdim etishga sodiqmiz.",
+			"mission": "Bizning missiyamiz — tibbiy yordam va davolash natijalarini yaxshilash uchun eng innovatsion va ishonchli tibbiy asbob-uskunalarga kirishni ta’minlash."
+		},
+		"faqs": {
+			"title": "Tez-tez beriladigan savollar",
+			"questions": []
+		},
+		"callToAction": {
+			"title": "Eng yaxshi jihozlar bilan klinikangizni jihozlashga tayyormisiz?",
+			"subtitle": "Bugun sotib olishni boshlang!",
+			"buttons": {
+				"browseProducts": "Mahsulotlarni ko‘rib chiqing",
+				"getInTouch": "Biz bilan bog‘laning"
+			}
+		},
+		"contactUs": {
+			"title": "KeshMed haqida",
+			"messageForm": {
+				"title": "Bizga xabar yuboring",
+				"sendButton": "Xabar yuborish"
+			},
+			"location": {
+				"title": "Bizning joylashuvimiz"
+			}
+		}
+	}
+}
