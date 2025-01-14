@@ -3,25 +3,68 @@
 import { useState } from "react";
 import Cookies from "js-cookie";
 
-export default function ProductForm() {
+export default function ProductForm({
+	setUpdate,
+	update,
+}: {
+	setUpdate: (upd: boolean) => void;
+	update: boolean;
+}) {
 	const [isPending, setIsPending] = useState(false);
+	const [preview, setPreview] = useState<string | null>(null);
+	const [file, setFile] = useState<any>(null);
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		setIsPending(true);
 
 		const formData = new FormData(event.target as HTMLFormElement);
+
+		// Проверка, что файл есть
+		if (!file || !(file instanceof File)) {
+			console.error("Please attach a valid image file.");
+			setIsPending(false);
+			return;
+		}
+
+		// Собираем данные для продукта
 		const productData = {
 			name: formData.get("name") as string,
 			category: formData.get("category") as string,
 			price: parseFloat(formData.get("price") as string),
 			amount: parseFloat(formData.get("amount") as string),
-			image: formData.get("image") as string,
+			image: "", // Будет обновлено после успешной загрузки изображения
 		};
 
 		try {
+			// Формируем новый FormData только для файла
+			const formDataUpload = new FormData();
+			formDataUpload.append("image", file);
+
+			// Отправляем запрос на загрузку изображения
+			const uploadResponse = await fetch(
+				`${process.env.NEXT_PUBLIC_BASE_URL}/upload`,
+				{
+					method: "POST",
+					headers: {
+						Authorization: `Bearer ${Cookies.get("authToken")}`,
+					},
+					body: formDataUpload,
+				}
+			);
+
+			if (!uploadResponse.ok) {
+				const errorData = await uploadResponse.json();
+				throw new Error(errorData.message || "Failed to upload image");
+			}
+
+			// Получаем ссылку на загруженное изображение
+			const uploadData = await uploadResponse.json();
+			productData.image = uploadData.data.imageUrl; // Предполагается, что API возвращает URL изображения
+
+			// Отправляем данные продукта
 			const response = await fetch(
-				process.env.NEXT_PUBLIC_BASE_URL + "/products",
+				`${process.env.NEXT_PUBLIC_BASE_URL}/products`,
 				{
 					method: "POST",
 					headers: {
@@ -38,8 +81,13 @@ export default function ProductForm() {
 			}
 
 			const data = await response.json();
-
 			console.log("Product added successfully!", data);
+
+			const form = event.target as HTMLFormElement;
+			form.reset();
+			setPreview(null);
+			setFile(null);
+			setUpdate(!update);
 		} catch (err: any) {
 			console.error("Error adding product:", err.message);
 		} finally {
@@ -123,12 +171,20 @@ export default function ProductForm() {
 					Image URL
 				</label>
 				<input
-					type="text"
+					type="file"
 					id="image"
 					name="image"
 					className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+					onChange={(e: any) => {
+						const file = e.currentTarget.files[0];
+						if (file) {
+							setPreview(URL.createObjectURL(file));
+							setFile(file);
+						}
+					}}
 				/>
 			</div>
+			{preview ? <img className="mb-4" src={preview} /> : null}
 			<button
 				type="submit"
 				disabled={isPending}
