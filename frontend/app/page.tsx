@@ -8,8 +8,9 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Star, Zap, Award, Globe } from "lucide-react";
+import { Star, Zap, Award, Globe, Send, MessageCircle } from "lucide-react";
 import ProductList from "@/components/productList";
+import Link from "next/link";
 
 export default function Home() {
 	return (
@@ -19,8 +20,7 @@ export default function Home() {
 				<div
 					className="absolute inset-0 bg-cover bg-center"
 					style={{
-						backgroundImage:
-							"url('/placeholder.svg?height=600&width=1200')",
+						backgroundImage: "url('/hero.jpg')",
 					}}
 				/>
 				<div className="absolute inset-0 bg-black/50" />
@@ -127,7 +127,7 @@ export default function Home() {
 									</div>
 									<p className="text-gray-600">
 										The quality of the medical equipment
-										from K-Medica is outstanding. It has
+										from KeshMed is outstanding. It has
 										greatly improved our patient care
 										capabilities.
 									</p>
@@ -144,10 +144,10 @@ export default function Home() {
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
 						<div>
 							<h2 className="text-3xl font-bold mb-4">
-								About K-Medica
+								About KeshMed
 							</h2>
 							<p className="text-gray-600 mb-4">
-								K-Medica is your trusted partner in advanced
+								KeshMed is your trusted partner in advanced
 								medical equipment from South Korea. We are
 								committed to bringing cutting-edge technology
 								and unparalleled quality to healthcare
@@ -162,7 +162,7 @@ export default function Home() {
 						</div>
 						<div className="aspect-video relative">
 							<img
-								src="/placeholder.svg?height=400&width=600&text=Our+Team"
+								src="/keshmedTeam.jpeg"
 								alt="Our Team"
 								className="object-cover w-full h-full rounded-lg"
 							/>
@@ -271,22 +271,48 @@ export default function Home() {
 									Our Location
 								</h3>
 								<div className="aspect-video relative mb-4">
-									<img
-										src="/placeholder.svg?height=300&width=400&text=Map"
-										alt="Map"
-										className="object-cover w-full h-full rounded-lg"
-									/>
+									<iframe
+										width="100%"
+										height="100%"
+										src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=47%20Digital-ro%209-gil,%20%09%09%09%09%09%09%09%09%09Geumcheon-gu,%20Seoul,%20Republic%20Korea.+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+									></iframe>
 								</div>
 								<p className="text-gray-600 mb-2">
-									123 Medical Equipment Street, Seoul, South
-									Korea
+									28,2 floor,47 Digital-ro 9-gil,
+									Geumcheon-gu, Seoul, Republic Korea.
 								</p>
-								<p className="text-gray-600">
-									Email: info@k-medica.com
-								</p>
-								<p className="text-gray-600">
-									Phone: +82 123 456 7890
-								</p>
+								<Link
+									href="mailto:sammedservic@gmail.com"
+									className="text-gray-600 block mb-3"
+								>
+									Email: sammedservic@gmail.com
+								</Link>
+								<Link
+									href="tel:+82 10 8359 3661"
+									className="text-gray-600"
+								>
+									Phone: +82 10 8359 3661
+								</Link>
+								<div className="flex items-center gap-2 mt-3">
+									<Link
+										href="https://t.me/kormedser"
+										className="flex items-center gap-2 bg-[#35A9F3] text-whtie p-3 w-fit rounded-md"
+									>
+										<Send color="white" />
+										<p className="text-white font-bold">
+											Telegram
+										</p>
+									</Link>
+									<Link
+										href="https://wa.me/qr/YPDLU5SD6JDUF1"
+										className="flex items-center gap-2 bg-[#1FBD28] text-whtie p-3 w-fit rounded-md"
+									>
+										<MessageCircle color="white" />
+										<p className="text-white font-bold">
+											WhatsApp
+										</p>
+									</Link>
+								</div>
 							</CardContent>
 						</Card>
 					</div>
