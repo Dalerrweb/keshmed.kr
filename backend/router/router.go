@@ -15,12 +15,14 @@ func Initalize(router *fiber.App) {
 	router.Post("/api/login", handlers.Login)
 	router.Post("/api/users", handlers.CreateUser)
 
+	productsRead := router.Group("/api/products")
+	productsRead.Get("/", handlers.GetAllProducts)
+	productsRead.Get("/", handlers.SearchProducts)
+	productsRead.Get("/:id", handlers.GetProductById)
+
 	products := router.Group("/api/products", middleware.ProtectRoute())
-	products.Get("/", handlers.GetAllProducts)
-	products.Get("/", handlers.SearchProducts)
 	products.Post("/", handlers.CreateProduct)
 	products.Patch("/:id", handlers.UpdateProduct)
-	products.Get("/:id", handlers.GetProductById)
 	products.Delete("/:id", handlers.DeleteProduct)
 
 	upload := router.Group("/api/upload", middleware.ProtectRoute())

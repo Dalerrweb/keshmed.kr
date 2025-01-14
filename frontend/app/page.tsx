@@ -9,6 +9,7 @@ import {
 	AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Star, Zap, Award, Globe } from "lucide-react";
+import ProductList from "@/components/productList";
 
 export default function Home() {
 	return (
@@ -43,35 +44,7 @@ export default function Home() {
 					<h2 className="text-3xl font-bold text-center mb-8">
 						Featured Products
 					</h2>
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-						{[...Array(8)].map((_, i) => (
-							<Card key={i} className="overflow-hidden">
-								<div className="aspect-square relative">
-									<img
-										src={`/placeholder.svg?height=300&width=300&text=Product+${
-											i + 1
-										}`}
-										alt={`Product ${i + 1}`}
-										className="object-cover w-full h-full transition-transform hover:scale-105"
-									/>
-								</div>
-								<CardContent className="p-4">
-									<h3 className="font-semibold mb-2">
-										Product {i + 1}
-									</h3>
-									<p className="text-sm text-gray-600 mb-2">
-										High-quality medical equipment
-									</p>
-									<div className="flex justify-between items-center">
-										<span className="font-bold">
-											$999.99
-										</span>
-										<Button size="sm">Add to Cart</Button>
-									</div>
-								</CardContent>
-							</Card>
-						))}
-					</div>
+					<ProductList />
 				</div>
 			</section>
 
