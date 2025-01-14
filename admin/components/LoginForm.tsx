@@ -1,25 +1,51 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useState } from "react";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
-interface LoginFormProps {
-	authenticate: (
-		formData: FormData
-	) => Promise<{ error: string } | undefined>;
-}
-
-export default function LoginForm({ authenticate }: LoginFormProps) {
-	const [state, formAction] = useActionState(authenticate, undefined);
+export default function LoginForm() {
 	const [isPending, setIsPending] = useState(false);
+	const [error, setError] = useState<string | null>(null);
+	const router = useRouter();
+
+	const baseURL = process.env.NEXT_PUBLIC_BASE_URL as string;
+
+	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		setIsPending(true);
+		setError(null);
+
+		const formData = new FormData(event.target as HTMLFormElement);
+		const username = formData.get("username") as string;
+		const password = formData.get("password") as string;
+
+		try {
+			const response = await fetch(`${baseURL}/login`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ username, password }),
+			});
+
+			if (!response.ok) {
+				const errorData = await response.json();
+				throw new Error(errorData.message || "Failed to log in");
+			}
+
+			const data = await response.json();
+			Cookies.set("authToken", data.token);
+			router.push("/admin/products");
+		} catch (err: any) {
+			setError(err.message || "An unknown error occurred");
+		} finally {
+			setIsPending(false);
+		}
+	};
 
 	return (
-		<form
-			action={async (formData) => {
-				setIsPending(true);
-				await formAction(formData);
-				setIsPending(false);
-			}}
-		>
+		<form onSubmit={handleSubmit}>
 			<div className="mb-4">
 				<label
 					htmlFor="username"
@@ -50,9 +76,7 @@ export default function LoginForm({ authenticate }: LoginFormProps) {
 					className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
 				/>
 			</div>
-			{state?.error && (
-				<p className="text-red-500 text-sm mb-4">{state.error}</p>
-			)}
+			{error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 			<button
 				type="submit"
 				disabled={isPending}
