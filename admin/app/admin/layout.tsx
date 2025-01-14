@@ -13,9 +13,9 @@ export default function AdminLayout({
 						<div className="flex">
 							<Link
 								href="/admin/products"
-								className="flex-shrink-0 flex items-center"
+								className="text-black flex-shrink-0 flex items-center"
 							>
-								Admin Panel
+								Admin Panel, Assalamu Alaikum Ravshan aka
 							</Link>
 						</div>
 						<div className="flex items-center">

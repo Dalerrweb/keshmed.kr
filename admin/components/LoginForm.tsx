@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
@@ -8,6 +8,13 @@ export default function LoginForm() {
 	const [isPending, setIsPending] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const router = useRouter();
+
+	useEffect(() => {
+		const token = Cookies.get("authToken");
+		if (token) {
+			Cookies.remove("authToken");
+		}
+	}, []);
 
 	const baseURL = process.env.NEXT_PUBLIC_BASE_URL as string;
 

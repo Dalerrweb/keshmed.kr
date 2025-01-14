@@ -1,19 +1,4 @@
-import { redirect } from "next/navigation";
 import LoginForm from "@/components/LoginForm";
-
-async function authenticate(formData: FormData) {
-	"use server";
-
-	const username = formData.get("username") as string;
-	const password = formData.get("password") as string;
-
-	// TODO: Implement your authentication logic here
-	if (username === "admin" && password === "password") {
-		redirect("/admin/products");
-	}
-
-	return { error: "Invalid credentials" };
-}
 
 export default function LoginPage() {
 	return (
@@ -22,7 +7,7 @@ export default function LoginPage() {
 				<h1 className="text-2xl font-bold mb-6 text-center">
 					Admin Login
 				</h1>
-				<LoginForm authenticate={authenticate} />
+				<LoginForm />
 			</div>
 		</div>
 	);
