@@ -1,5 +1,12 @@
 {
 	"homePage": {
+		"header": {
+			"products": "제품",
+			"aboutUs": "회사 소개",
+			"whyChooseUs": "왜 우리를 선택해야 하나요?",
+			"testimonials": "고객 후기",
+			"contact": "문의하기"
+		},
 		"greeting": {
 			"title": "대한민국의 첨단 의료 장비 신뢰할 수 있는 공급처",
 			"buttons": {

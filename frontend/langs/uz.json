@@ -1,5 +1,12 @@
 {
 	"homePage": {
+		"header": {
+			"products": "Mahsulotlar",
+			"aboutUs": "Biz haqimizda",
+			"whyChooseUs": "Nega bizni tanlashadi?",
+			"testimonials": "Fikr-mulohazalar",
+			"contact": "Aloqa"
+		},
 		"greeting": {
 			"title": "Janubiy Koreyadan ilg‘or tibbiy jihozlar bo‘yicha ishonchli manba",
 			"buttons": {

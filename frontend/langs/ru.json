@@ -1,5 +1,12 @@
 {
 	"homePage": {
+		"header": {
+			"products": "Продукты",
+			"aboutUs": "О нас",
+			"whyChooseUs": "Почему выбирают нас",
+			"testimonials": "Отзывы",
+			"contact": "Контакты"
+		},
 		"greeting": {
 			"title": "Ваш надежный источник передового медицинского оборудования из Южной Кореи",
 			"buttons": {

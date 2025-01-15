@@ -3,45 +3,48 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import LanguageSwitcher from "./languageSwitcher";
+import { useTranslations } from "next-intl";
 
 export default function Header() {
+	const t = useTranslations("homePage");
+
 	return (
 		<header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
 			<div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
 				<div className="flex gap-6 md:gap-10">
 					<Link href="/" className="flex items-center space-x-2">
-						<span className="inline-block font-bold">K-Medica</span>
+						<span className="inline-block font-bold">KeshMed</span>
 					</Link>
 					<nav className="hidden md:flex gap-6">
 						<Link
 							href="#products"
 							className="flex items-center text-sm font-medium text-muted-foreground"
 						>
-							Products
+							{t("header.products")}
 						</Link>
 						<Link
 							href="#about"
 							className="flex items-center text-sm font-medium text-muted-foreground"
 						>
-							About Us
+							{t("header.aboutUs")}
 						</Link>
 						<Link
 							href="#why-choose-us"
 							className="flex items-center text-sm font-medium text-muted-foreground"
 						>
-							Why Choose Us
+							{t("header.whyChooseUs")}
 						</Link>
 						<Link
 							href="#testimonials"
 							className="flex items-center text-sm font-medium text-muted-foreground"
 						>
-							Testimonials
+							{t("header.testimonials")}
 						</Link>
 						<Link
 							href="#contact"
 							className="flex items-center text-sm font-medium text-muted-foreground"
 						>
-							Contact
+							{t("header.contact")}
 						</Link>
 					</nav>
 				</div>

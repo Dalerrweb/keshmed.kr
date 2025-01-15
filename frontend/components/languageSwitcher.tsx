@@ -8,6 +8,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import { Globe } from "lucide-react";
 
 const languages = [
 	{ code: "en", name: "English", flag: "🇬🇧" },
@@ -26,8 +27,8 @@ export default function LanguageSwitcher() {
 
 	return (
 		<Select onValueChange={changeLanguage}>
-			<SelectTrigger className="w-[180px]">
-				<SelectValue placeholder="Select language" />
+			<SelectTrigger className="w-[50px] px-2">
+				<SelectValue placeholder={<Globe className="h-4 w-4" />} />
 			</SelectTrigger>
 			<SelectContent>
 				{languages.map((lang) => (

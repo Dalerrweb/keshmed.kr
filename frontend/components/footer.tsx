@@ -98,7 +98,7 @@ export default function Footer() {
 			</div>
 			<div className="bg-gray-800 py-4">
 				<div className="container text-center text-sm">
-					&copy; {new Date().getFullYear()} K-Medica. All rights
+					&copy; {new Date().getFullYear()} KeshMed. All rights
 					reserved.
 				</div>
 			</div>

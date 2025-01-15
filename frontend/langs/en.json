@@ -1,5 +1,12 @@
 {
 	"homePage": {
+		"header": {
+			"products": "Products",
+			"aboutUs": "About Us",
+			"whyChooseUs": "Why Choose Us",
+			"testimonials": "Testimonials",
+			"contact": "Contact"
+		},
 		"greeting": {
 			"title": "Your Trusted Source for Advanced Medical Equipment from South Korea",
 			"buttons": {
