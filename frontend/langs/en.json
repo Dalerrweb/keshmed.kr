@@ -36,7 +36,28 @@
 		},
 		"customerReviews": {
 			"title": "What Our Customers Say",
-			"reviews": []
+			"reviews": [
+				{
+					"name": "Rustamhon Turaev",
+					"rating": 5,
+					"feedback": "We ordered equipment through KeshMed, and I was not disappointed. The devices are modern, and the delivery was on time. Thank you for your professionalism!"
+				},
+				{
+					"name": "Nigina Omonova",
+					"rating": 5,
+					"feedback": "I loved how KeshMed works with customers. The equipment is of high quality, and the support at every stage of the order was excellent. Highly recommend!"
+				},
+				{
+					"name": "Mahmudjon Haydarov",
+					"rating": 5,
+					"feedback": "KeshMed's equipment is the best we’ve purchased in years. Our whole team is satisfied. Looking forward to working with you further!"
+				},
+				{
+					"name": "Shokhista Yuldasheva",
+					"rating": 5,
+					"feedback": "I am very happy we chose KeshMed. The equipment met our expectations, delivery was fast, and the consultation was clear. Thank you!"
+				}
+			]
 		},
 		"aboutUs": {
 			"title": "About KeshMed",
@@ -45,7 +66,24 @@
 		},
 		"faqs": {
 			"title": "Frequently Asked Questions",
-			"questions": []
+			"questions": [
+				{
+					"question": "Do you provide installation services for the equipment?",
+					"answer": "Yes, we offer guidance on installation and setup for our equipment. For customers in Uzbekistan, we can also connect you with local technicians for assistance."
+				},
+				{
+					"question": "How long does delivery take to Uzbekistan?",
+					"answer": "Delivery typically takes 7-14 days, depending on the region. We ensure timely and secure shipping."
+				},
+				{
+					"question": "Can I request a demo of the equipment?",
+					"answer": "Absolutely! We can arrange virtual demonstrations for most of our products. Contact us to schedule a session."
+				},
+				{
+					"question": "What payment methods do you accept?",
+					"answer": "We accept bank transfers, major credit cards, and local payment systems like PayMe or Click for your convenience."
+				}
+			]
 		},
 		"callToAction": {
 			"title": "Ready to Equip Your Practice with the Best?",

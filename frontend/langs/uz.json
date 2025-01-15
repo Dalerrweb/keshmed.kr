@@ -36,7 +36,28 @@
 		},
 		"customerReviews": {
 			"title": "Mijozlarimiz nima deydi",
-			"reviews": []
+			"reviews": [
+				{
+					"name": "Rustamhon Turaev",
+					"rating": 5,
+					"feedback": "KeshMed orqali uskuna buyurtma qildik, va men umuman afsuslanmadim. Uskunalar zamonaviy va yetkazib berish o‘z vaqtida bo‘ldi. Kasbiylik uchun rahmat!"
+				},
+				{
+					"name": "Nigina Omonova",
+					"rating": 5,
+					"feedback": "KeshMed mijozlar bilan qanday ishlashini juda yoqtirdim. Uskunalar sifatli va buyurtmaning har bosqichida qo‘llab-quvvatlash a’lo darajada edi. Tavsiya qilaman!"
+				},
+				{
+					"name": "Mahmudjon Haydarov",
+					"rating": 5,
+					"feedback": "KeshMed uskunalari — biz yillar davomida sotib olgan eng yaxshisi. Bizning butun jamoamiz bundan mamnun. Kelgusida hamkorlikni davom ettirishni orziqib kutamiz!"
+				},
+				{
+					"name": "Shokhista Yuldasheva",
+					"rating": 5,
+					"feedback": "KeshMedni tanlaganimizdan juda xursandmiz. Uskunalar bizning kutganimizga mos keldi, yetkazib berish tez bo‘ldi, va maslahatlar aniq edi. Rahmat!"
+				}
+			]
 		},
 		"aboutUs": {
 			"title": "KeshMed haqida",
@@ -45,7 +66,24 @@
 		},
 		"faqs": {
 			"title": "Tez-tez beriladigan savollar",
-			"questions": []
+			"questions": [
+				{
+					"question": "Uskunani o‘rnatishda yordam bera olasizmi?",
+					"answer": "Ha, biz uskunani o‘rnatish va sozlash bo‘yicha qo‘llanmalar taqdim etamiz. O‘zbekiston mijozlari uchun mahalliy texniklar bilan bog‘lanishga yordam beramiz."
+				},
+				{
+					"question": "O‘zbekistonga yetkazib berish qancha vaqt oladi?",
+					"answer": "Yetkazib berish odatda mintaqaga qarab 7-14 kun davom etadi. Biz o‘z vaqtida va xavfsiz yetkazib berishni kafolatlaymiz."
+				},
+				{
+					"question": "Uskunalar uchun demo so‘rashim mumkinmi?",
+					"answer": "Albatta! Aksariyat mahsulotlarimiz uchun virtual demo tashkil qilishimiz mumkin. Biz bilan bog‘lanib, vaqtni belgilang."
+				},
+				{
+					"question": "Qanday to‘lov usullarini qabul qilasiz?",
+					"answer": "Biz bank o‘tkazmalari, asosiy kredit kartalari va mahalliy to‘lov tizimlari, masalan, PayMe yoki Click orqali to‘lovni qabul qilamiz."
+				}
+			]
 		},
 		"callToAction": {
 			"title": "Eng yaxshi jihozlar bilan klinikangizni jihozlashga tayyormisiz?",

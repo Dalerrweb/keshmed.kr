@@ -15,6 +15,7 @@ import { useTranslations } from "next-intl";
 
 export default function Home() {
 	const t = useTranslations("homePage");
+
 	return (
 		<main className="flex-1">
 			{/* Hero Section */}
@@ -31,12 +32,16 @@ export default function Home() {
 						{t("greeting.title")}
 					</h1>
 					<div className="flex justify-center space-x-4">
-						<Button size="lg">
-							{t("greeting.buttons.exploreProducts")}
-						</Button>
-						<Button size="lg" variant="outline">
-							{t("greeting.buttons.contactSales")}
-						</Button>
+						<Link href="/products">
+							<Button size="lg">
+								{t("greeting.buttons.exploreProducts")}
+							</Button>
+						</Link>
+						<Link href="/#contact">
+							<Button size="lg" variant="outline">
+								{t("greeting.buttons.contactSales")}
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</section>
@@ -112,38 +117,34 @@ export default function Home() {
 						{t("customerReviews.title")}
 					</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-						{[...Array(4)].map((_, i) => (
-							<Card key={i}>
-								<CardContent className="p-6">
-									<div className="flex items-center mb-4">
-										<img
-											src={`/placeholder.svg?height=50&width=50&text=User`}
-											alt="User"
-											className="w-12 h-12 rounded-full mr-4"
-										/>
-										<div>
-											<h3 className="font-semibold">
-												Customer {i + 1}
-											</h3>
-											<div className="flex">
-												{[...Array(5)].map((_, j) => (
-													<Star
-														key={j}
-														className="w-4 h-4 text-yellow-400 fill-current"
-													/>
-												))}
+						{t
+							.raw("customerReviews.reviews")
+							.map((item: any, i: number) => (
+								<Card key={i}>
+									<CardContent className="p-6">
+										<div className="flex items-center mb-4">
+											<div>
+												<h3 className="font-semibold">
+													{item.name}
+												</h3>
+												<div className="flex">
+													{[
+														...Array(item.rating),
+													].map((_, j) => (
+														<Star
+															key={j}
+															className="w-4 h-4 text-yellow-400 fill-current"
+														/>
+													))}
+												</div>
 											</div>
 										</div>
-									</div>
-									<p className="text-gray-600">
-										The quality of the medical equipment
-										from KeshMed is outstanding. It has
-										greatly improved our patient care
-										capabilities.
-									</p>
-								</CardContent>
-							</Card>
-						))}
+										<p className="text-gray-600">
+											{item.feedback}
+										</p>
+									</CardContent>
+								</Card>
+							))}
 					</div>
 				</div>
 			</section>
@@ -181,48 +182,16 @@ export default function Home() {
 						{t("faqs.title")}
 					</h2>
 					<Accordion type="single" collapsible className="w-full">
-						<AccordionItem value="item-1">
-							<AccordionTrigger>
-								What are your product warranties?
-							</AccordionTrigger>
-							<AccordionContent>
-								Our products come with a standard 2-year
-								warranty. Extended warranties are available for
-								purchase.
-							</AccordionContent>
-						</AccordionItem>
-						<AccordionItem value="item-2">
-							<AccordionTrigger>
-								What are the shipping times?
-							</AccordionTrigger>
-							<AccordionContent>
-								Shipping times vary depending on your location.
-								Typically, orders are delivered within 5-10
-								business days for domestic orders and 10-20
-								business days for international orders.
-							</AccordionContent>
-						</AccordionItem>
-						<AccordionItem value="item-3">
-							<AccordionTrigger>
-								What payment methods do you accept?
-							</AccordionTrigger>
-							<AccordionContent>
-								We accept all major credit cards, PayPal, and
-								bank transfers. For large orders, we also offer
-								financing options.
-							</AccordionContent>
-						</AccordionItem>
-						<AccordionItem value="item-4">
-							<AccordionTrigger>
-								What is your customer support availability?
-							</AccordionTrigger>
-							<AccordionContent>
-								Our customer support team is available 24/7 via
-								email and during business hours via phone. We
-								strive to respond to all inquiries within 24
-								hours.
-							</AccordionContent>
-						</AccordionItem>
+						{t.raw("faqs.questions").map((item: any, i: number) => (
+							<AccordionItem value={`item-${i}`} key={i}>
+								<AccordionTrigger>
+									{item.question}
+								</AccordionTrigger>
+								<AccordionContent>
+									{item.answer}
+								</AccordionContent>
+							</AccordionItem>
+						))}
 					</Accordion>
 				</div>
 			</section>
@@ -237,13 +206,16 @@ export default function Home() {
 						{t("callToAction.subtitle")}
 					</p>
 					<div className="flex justify-center space-x-4">
-						<Button size="lg">
-							{" "}
-							{t("callToAction.buttons.browseProducts")}
-						</Button>
-						<Button size="lg" variant="outline">
-							{t("callToAction.buttons.getInTouch")}
-						</Button>
+						<Link href="/products">
+							<Button size="lg">
+								{t("callToAction.buttons.browseProducts")}
+							</Button>
+						</Link>
+						<Link href="/#contact">
+							<Button size="lg" variant="outline">
+								{t("callToAction.buttons.getInTouch")}
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</section>
