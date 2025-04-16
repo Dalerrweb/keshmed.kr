@@ -9,10 +9,10 @@ import { requireAdmin } from "@/lib/middleware/auth-middleware";
 // GET a single product by ID - Public route
 export async function GET(
 	request: NextRequest,
-	{ params }: { params: { id: string } }
+	{ params }: { params: Promise<{ id: string }> }
 ) {
 	try {
-		const id = params.id;
+		const { id } = await params;
 
 		const product = await prisma.product.findUnique({
 			where: { id },
@@ -38,11 +38,11 @@ export async function GET(
 // PUT update a product - Protected route (admin only)
 export async function PUT(
 	request: NextRequest,
-	{ params }: { params: { id: string } }
+	{ params }: { params: Promise<{ id: string }> }
 ) {
 	return requireAdmin(request, async () => {
 		try {
-			const id = params.id;
+			const { id } = await params;
 			const body = await request.json();
 
 			// Check if product exists
@@ -116,11 +116,11 @@ export async function PUT(
 // DELETE a product (soft delete) - Protected route (admin only)
 export async function DELETE(
 	request: NextRequest,
-	{ params }: { params: { id: string } }
+	{ params }: { params: Promise<{ id: string }> }
 ) {
 	return requireAdmin(request, async () => {
 		try {
-			const id = params.id;
+			const { id } = await params;
 
 			// Check if product exists
 			const existingProduct = await prisma.product.findUnique({
@@ -158,11 +158,11 @@ const partialProductSchema = productSchema.partial(); // ← делает все
 
 export async function PATCH(
 	request: NextRequest,
-	{ params }: { params: { id: string } }
+	{ params }: { params: Promise<{ id: string }> }
 ) {
 	return requireAdmin(request, async () => {
 		try {
-			const id = params.id;
+			const { id } = await params;
 			const body = await request.json();
 
 			// Check if product exists

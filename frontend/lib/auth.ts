@@ -1,6 +1,6 @@
 import { compare, hash } from "bcrypt";
 import { SignJWT, jwtVerify } from "jose";
-import { cookies } from "next/headers";
+import Cookies from "js-cookie";
 import type { NextRequest } from "next/server";
 import type { JWTPayload } from "./types";
 
@@ -61,10 +61,8 @@ export function getTokenFromRequest(request: NextRequest): string | null {
 	if (authHeader && authHeader.startsWith("Bearer ")) {
 		return authHeader.substring(7);
 	}
-
 	// Try to get token from cookies
-	const cookieStore = cookies();
-	const token = cookieStore.get("token")?.value;
+	const token = Cookies.get("token") || null;
 	return token || null;
 }
 
