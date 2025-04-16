@@ -26,7 +26,7 @@ export default function ProductList({ update }: { update: boolean }) {
 				if (!res.ok) throw new Error("Failed to fetch products");
 				const data = await res.json();
 
-				setProducts(data.data);
+				setProducts(data);
 			} catch (err: any) {
 				setError(err.message);
 			}
@@ -70,10 +70,10 @@ export default function ProductList({ update }: { update: boolean }) {
 
 			if (file && file instanceof File) {
 				const formDataUpload = new FormData();
-				formDataUpload.append("image", file);
+				formDataUpload.append("file", file);
 
 				const uploadResponse = await fetch(
-					`${process.env.NEXT_PUBLIC_BASE_URL}/upload`,
+					`${process.env.NEXT_PUBLIC_BASE_URL}/uploadImage`,
 					{
 						method: "POST",
 						headers: {
@@ -91,7 +91,7 @@ export default function ProductList({ update }: { update: boolean }) {
 				}
 
 				const uploadData = await uploadResponse.json();
-				updatedProduct.image = uploadData.data.imageUrl;
+				updatedProduct.image = uploadData.url;
 			}
 
 			const res = await fetch(
@@ -107,7 +107,7 @@ export default function ProductList({ update }: { update: boolean }) {
 			);
 			if (!res.ok) throw new Error("Failed to update product");
 
-			const { data } = await res.json();
+			const data = await res.json();
 
 			setProducts((prev: any) =>
 				prev.map((product: any) => (product.id === id ? data : product))
@@ -221,7 +221,7 @@ export default function ProductList({ update }: { update: boolean }) {
 										src={
 											preview
 												? preview
-												: `${process.env.NEXT_PUBLIC_BASE_URL}/
+												: `${process.env.NEXT_PUBLIC_IMAGE_URL}/
 											${product.image}`
 										}
 									/>
@@ -261,7 +261,7 @@ export default function ProductList({ update }: { update: boolean }) {
 									</div>
 									{product.image && (
 										<img
-											src={`${process.env.NEXT_PUBLIC_BASE_URL}/
+											src={`${process.env.NEXT_PUBLIC_IMAGE_URL}
 											${product.image}`}
 											alt={product.name}
 											className="w-full h-[400px]"

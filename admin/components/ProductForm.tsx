@@ -39,11 +39,11 @@ export default function ProductForm({
 		try {
 			// Формируем новый FormData только для файла
 			const formDataUpload = new FormData();
-			formDataUpload.append("image", file);
+			formDataUpload.append("file", file);
 
 			// Отправляем запрос на загрузку изображения
 			const uploadResponse = await fetch(
-				`${process.env.NEXT_PUBLIC_BASE_URL}/upload`,
+				`${process.env.NEXT_PUBLIC_BASE_URL}/uploadImage`,
 				{
 					method: "POST",
 					headers: {
@@ -60,7 +60,8 @@ export default function ProductForm({
 
 			// Получаем ссылку на загруженное изображение
 			const uploadData = await uploadResponse.json();
-			productData.image = uploadData.data.imageUrl; // Предполагается, что API возвращает URL изображения
+
+			productData.image = uploadData.url;
 
 			// Отправляем данные продукта
 			const response = await fetch(

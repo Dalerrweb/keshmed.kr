@@ -48,7 +48,8 @@ const ProductList = () => {
 			}
 
 			const data = await response.json();
-			setProducts(data.data);
+
+			setProducts(data);
 			setPagination(data.pagination);
 		} catch (err: any) {
 			setError(
@@ -78,7 +79,7 @@ const ProductList = () => {
 					<Card key={product.id} className="overflow-hidden">
 						<div className="aspect-square relative">
 							<img
-								src={`${process.env.NEXT_PUBLIC_BASE_URL}/${product.image}`}
+								src={product.image}
 								alt={product.name}
 								className="object-cover w-full h-full transition-transform hover:scale-105"
 							/>

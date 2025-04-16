@@ -12,6 +12,7 @@ import { Star, Zap, Award, Globe, Send, MessageCircle } from "lucide-react";
 import ProductList from "@/components/productList";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function Home() {
 	const t = useTranslations("homePage");

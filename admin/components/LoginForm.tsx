@@ -24,7 +24,7 @@ export default function LoginForm() {
 		setError(null);
 
 		const formData = new FormData(event.target as HTMLFormElement);
-		const username = formData.get("username") as string;
+		const email = formData.get("email") as string;
 		const password = formData.get("password") as string;
 
 		try {
@@ -33,7 +33,7 @@ export default function LoginForm() {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ username, password }),
+				body: JSON.stringify({ email, password }),
 			});
 
 			if (!response.ok) {
@@ -55,15 +55,15 @@ export default function LoginForm() {
 		<form onSubmit={handleSubmit}>
 			<div className="mb-4">
 				<label
-					htmlFor="username"
+					htmlFor="email"
 					className="block text-sm font-medium text-gray-700"
 				>
-					Username
+					Email
 				</label>
 				<input
-					type="text"
-					id="username"
-					name="username"
+					type="email"
+					id="email"
+					name="email"
 					required
 					className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
 				/>
