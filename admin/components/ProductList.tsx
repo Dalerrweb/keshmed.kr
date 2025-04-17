@@ -230,12 +230,7 @@ export default function ProductList({ update }: { update: boolean }) {
 									/>
 									<img
 										className="mb-4 w-full h-[400px] object-cover"
-										src={
-											preview
-												? preview
-												: `${process.env.NEXT_PUBLIC_IMAGE_URL}/
-											${product.image}`
-										}
+										src={preview ? preview : product.image}
 									/>
 								</div>
 								<button
@@ -273,8 +268,7 @@ export default function ProductList({ update }: { update: boolean }) {
 									</div>
 									{product.image && (
 										<img
-											src={`${process.env.NEXT_PUBLIC_IMAGE_URL}
-											${product.image}`}
+											src={product.image}
 											alt={product.name}
 											className="w-full h-[400px]"
 										/>

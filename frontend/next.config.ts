@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
 				protocol: "https",
 				hostname: "**",
 			},
+			{
+				protocol: "https",
+				hostname: "utfs.io",
+			},
 		],
 	},
 	// Ensure Next.js serves files from the public directory
