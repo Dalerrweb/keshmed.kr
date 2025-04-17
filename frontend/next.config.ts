@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
 		serverComponentsExternalPackages: ["sharp"],
 	},
 	env: {
-		ALLOWED_ORIGIN: "http://localhost:3001",
+		ALLOWED_ORIGIN: "https://keshmed-kr-ifat.vercel.app",
 	},
 };
 
