@@ -3,6 +3,7 @@ import { z } from "zod";
 // Product schema for validation
 export const productSchema = z.object({
 	name: z.string().min(3).max(100),
+	description: z.string().min(10).max(500).optional(),
 	category: z.string().optional(),
 	price: z.number().nonnegative().optional(),
 	amount: z.number().nonnegative(),

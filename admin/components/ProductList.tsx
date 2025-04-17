@@ -63,6 +63,7 @@ export default function ProductList({ update }: { update: boolean }) {
 			const id = formData.get("id") as string;
 			const updatedProduct: any = {
 				name: formData.get("name"),
+				description: formData.get("description"),
 				category: formData.get("category"),
 				price: parseFloat(formData.get("price") as string),
 				amount: parseFloat(formData.get("amount") as string),
@@ -153,6 +154,17 @@ export default function ProductList({ update }: { update: boolean }) {
 											type="text"
 											name="name"
 											defaultValue={product.name}
+											required
+											className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+										/>
+									</div>
+									<div className="mb-2 w-full">
+										<label className="block text-gray-700 text-sm font-bold mb-1">
+											Description
+										</label>
+										<textarea
+											name="description"
+											defaultValue={product.description}
 											required
 											className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 										/>

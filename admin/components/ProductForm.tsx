@@ -30,6 +30,7 @@ export default function ProductForm({
 		// Собираем данные для продукта
 		const productData = {
 			name: formData.get("name") as string,
+			description: formData.get("description") as string,
 			category: formData.get("category") as string,
 			price: parseFloat(formData.get("price") as string),
 			amount: parseFloat(formData.get("amount") as string),
@@ -115,6 +116,20 @@ export default function ProductForm({
 					required
 					className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 				/>
+			</div>
+			<div className="mb-4">
+				<label
+					htmlFor="description"
+					className="block text-gray-700 text-sm font-bold mb-2"
+				>
+					Description
+				</label>
+				<textarea
+					id="description"
+					name="description"
+					required
+					className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+				></textarea>
 			</div>
 			<div className="mb-4">
 				<label

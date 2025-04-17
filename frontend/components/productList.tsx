@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 
 type Product = {
 	id: string;
+	description: string;
 	name: string;
 	category: string;
 	price: number;
@@ -90,6 +91,10 @@ const ProductList = () => {
 							</h3>
 							<p className="text-sm text-gray-600 mb-2">
 								{product.category}
+							</p>
+							<p className="text-sm text-gray-700 mb-4">
+								{product.description ||
+									"This product has no description."}
 							</p>
 							<div className="flex justify-between items-center">
 								<span className="font-bold">
