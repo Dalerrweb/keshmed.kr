@@ -97,7 +97,8 @@
 			"title": "KeshMed 소개",
 			"messageForm": {
 				"title": "메시지를 보내주세요",
-				"sendButton": "메시지 보내기"
+				"sendButton": "메시지 보내기",
+				"loading": "전송 중..."
 			},
 			"location": {
 				"title": "저희 위치"

@@ -97,7 +97,8 @@
 			"title": "About KeshMed",
 			"messageForm": {
 				"title": "Send us a message",
-				"sendButton": "Send Message"
+				"sendButton": "Send Message",
+				"loading": "Sending..."
 			},
 			"location": {
 				"title": "Our Location"

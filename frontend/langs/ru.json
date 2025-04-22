@@ -97,7 +97,8 @@
 			"title": "О KeshMed",
 			"messageForm": {
 				"title": "Отправьте нам сообщение",
-				"sendButton": "Отправить сообщение"
+				"sendButton": "Отправить сообщение",
+				"loading": "Отправка..."
 			},
 			"location": {
 				"title": "Наше местоположение"

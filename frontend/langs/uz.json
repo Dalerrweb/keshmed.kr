@@ -97,7 +97,8 @@
 			"title": "KeshMed haqida",
 			"messageForm": {
 				"title": "Bizga xabar yuboring",
-				"sendButton": "Xabar yuborish"
+				"sendButton": "Xabar yuborish",
+				"loading": "Yuborilmoqda..."
 			},
 			"location": {
 				"title": "Bizning joylashuvimiz"

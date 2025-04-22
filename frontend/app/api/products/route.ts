@@ -61,8 +61,6 @@ export async function POST(request: NextRequest) {
 
 			return NextResponse.json(product, { status: 201 });
 		} catch (error: any) {
-			console.error("Failed to create product:", error);
-
 			if (error.name === "ZodError") {
 				return NextResponse.json(
 					{ error: "Validation error", details: error.errors },

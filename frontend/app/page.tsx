@@ -13,6 +13,7 @@ import ProductList from "@/components/productList";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import LeadForm from "@/components/leadForm";
 
 export default function Home() {
 	const t = useTranslations("homePage");
@@ -229,22 +230,7 @@ export default function Home() {
 					</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 						<Card>
-							<CardContent className="p-6">
-								<h3 className="text-xl font-semibold mb-4">
-									{t("contactUs.messageForm.title")}
-								</h3>
-								<form className="space-y-4">
-									<Input placeholder="Your Name" />
-									<Input
-										type="email"
-										placeholder="Your Email"
-									/>
-									<Textarea placeholder="Your Message" />
-									<Button type="submit">
-										{t("contactUs.messageForm.sendButton")}
-									</Button>
-								</form>
-							</CardContent>
+							<LeadForm />
 						</Card>
 						<Card>
 							<CardContent className="p-6">
