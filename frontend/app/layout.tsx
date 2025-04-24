@@ -8,7 +8,9 @@ import { getLocale, getMessages } from "next-intl/server";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
-export async function generateMetadata({ params: { locale } }: any) {
+export async function generateMetadata() {
+	const locale = (await getLocale()) as any;
+
 	const metadata: any = await getMessages(locale);
 
 	const imageMap: Record<string, string> = {
