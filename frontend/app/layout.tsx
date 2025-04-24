@@ -8,6 +8,40 @@ import { getLocale, getMessages } from "next-intl/server";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
+export async function generateMetadata({ params: { locale } }: any) {
+	const metadata: any = await getMessages(locale);
+
+	return {
+		title: metadata.meta?.title,
+		description: metadata.meta?.description,
+		keywords:
+			metadata.meta?.keywords ??
+			"used medical equipment, Korean medical devices, second-hand medtech, Keshmed, medical supplies Central Asia",
+		openGraph: {
+			title: metadata.meta?.title,
+			description: metadata.meta?.description,
+			type: "website",
+			locale,
+			siteName: "Keshmed",
+			url: "https://keshmed.kr",
+			images: [
+				{
+					url: "https://keshmed.kr/og-image.jpg",
+					width: 1200,
+					height: 630,
+					alt: metadata.meta?.title,
+				},
+			],
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: metadata.meta?.title,
+			description: metadata.meta?.description,
+			site: "@keshmed",
+		},
+	};
+}
+
 export default async function RootLayout({
 	children,
 }: {

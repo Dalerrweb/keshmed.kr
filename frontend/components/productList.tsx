@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type Product = {
 	id: string;
@@ -34,6 +35,8 @@ const ProductList = () => {
 		setError(null);
 
 		try {
+			console.log("start");
+
 			const response = await fetch(
 				`${process.env.NEXT_PUBLIC_BASE_URL}/products?page=${page}`,
 				{
@@ -43,7 +46,6 @@ const ProductList = () => {
 					},
 				}
 			);
-
 			if (!response.ok) {
 				throw new Error("Failed to fetch products.");
 			}
@@ -100,7 +102,9 @@ const ProductList = () => {
 								<span className="font-bold">
 									${product.price.toFixed(2)}
 								</span>
-								<Button size="sm">Add to Cart</Button>
+								<Link href={`/products/${product.id}`}>
+									<Button size="sm">View</Button>
+								</Link>
 							</div>
 						</CardContent>
 					</Card>

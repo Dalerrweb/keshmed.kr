@@ -1,4 +1,9 @@
 {
+	"meta": {
+		"title": "Keshmed — 병원과 의사를 위한 한국산 중고 의료 장비",
+		"description": "Keshmed는 한국에서 수입된 중고 의료 장비 전문 매장입니다. 의사와 병원을 위한 인증된 중고 장비. 중앙아시아 전역으로 배송됩니다.",
+		"keywords": "중고 의료 장비, 한국 의료 기기, Keshmed, 병원 장비, 의료 공급, 중고 메드테크"
+	},
 	"homePage": {
 		"header": {
 			"products": "제품",

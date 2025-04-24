@@ -1,4 +1,9 @@
 {
+	"meta": {
+		"title": "Keshmed — Klinikalar va shifokorlar uchun Koreyadan ishonchli ishlatilgan tibbiy uskuna",
+		"description": "Keshmed — Koreyadan keltirilgan ishlatilgan tibbiy uskunalar do‘koni. Shifokorlar va klinikalar uchun sertifikatlangan uskuna. Markaziy Osiyo bo‘ylab yetkazib beriladi.",
+		"keywords": "ishlatilgan tibbiy uskuna, Koreyadan tibbiy texnika, Keshmed, klinikalar uchun uskuna, tibbiy ta'minot, Markaziy Osiyo"
+	},
 	"homePage": {
 		"header": {
 			"products": "Mahsulotlar",
