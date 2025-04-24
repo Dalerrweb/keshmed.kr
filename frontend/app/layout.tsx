@@ -11,22 +11,29 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 export async function generateMetadata({ params: { locale } }: any) {
 	const metadata: any = await getMessages(locale);
 
+	const imageMap: Record<string, string> = {
+		ru: "/ogs/keshmed_og_en.png",
+		en: "/ogs/keshmed_og_en.png",
+		kr: "/ogs/keshmed_og_en.png",
+		uz: "/ogs/keshmed_og_en.png",
+	};
+
+	const ogImage = `https://keshmed-kr.vercel.app${imageMap[locale] ?? ""}`;
+
 	return {
 		title: metadata.meta?.title,
 		description: metadata.meta?.description,
-		keywords:
-			metadata.meta?.keywords ??
-			"used medical equipment, Korean medical devices, second-hand medtech, Keshmed, medical supplies Central Asia",
+		keywords: metadata.meta?.keywords ?? "...",
 		openGraph: {
 			title: metadata.meta?.title,
 			description: metadata.meta?.description,
 			type: "website",
 			locale,
 			siteName: "Keshmed",
-			url: "https://keshmed.kr",
+			url: "https://keshmed-kr.vercel.app",
 			images: [
 				{
-					url: "https://keshmed.kr/og-image.jpg",
+					url: ogImage,
 					width: 1200,
 					height: 630,
 					alt: metadata.meta?.title,
@@ -38,6 +45,7 @@ export async function generateMetadata({ params: { locale } }: any) {
 			title: metadata.meta?.title,
 			description: metadata.meta?.description,
 			site: "@keshmed",
+			images: [ogImage],
 		},
 	};
 }

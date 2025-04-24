@@ -10,6 +10,44 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ContactModal } from "@/components/contact-modal";
 import prisma from "@/lib/db";
 
+export async function generateMetadata({ params }: any) {
+	const { id } = await params;
+
+	const data = await prisma.product.findUnique({
+		where: { id },
+	});
+
+	return {
+		title: `Keshmed - ${data?.name}`,
+		description: data?.description,
+		keywords: data?.category,
+		openGraph: {
+			title: data?.name,
+			description: data?.description,
+			type: "website",
+			locale: "ru",
+			siteName: "Keshmed",
+			url: `https://keshmed-kr.vercel.app/products/${id}`,
+			images: [
+				{
+					url:
+						data?.image || `https://keshmed-kr.vercel.app/hero.jpg`,
+					width: 1200,
+					height: 630,
+					alt: data?.name,
+				},
+			],
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: data?.name,
+			description: data?.description,
+			site: "@keshmed",
+			images: [data?.image || `https://keshmed-kr.vercel.app/hero.jpg`],
+		},
+	};
+}
+
 async function getRelatedProducts() {
 	const products = await prisma.product.findMany({
 		take: 4,
