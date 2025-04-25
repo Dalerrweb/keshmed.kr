@@ -12,7 +12,6 @@ import { Star, Zap, Award, Globe, Send, MessageCircle } from "lucide-react";
 import ProductList from "@/components/productList";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import LeadForm from "@/components/leadForm";
 
 export default function Home() {
@@ -177,6 +176,13 @@ export default function Home() {
 				</div>
 			</section>
 
+			{/* Instagram Embed */}
+			<section id="about" className="py-16">
+				<div className="container">
+					<InstagramEmbed />
+				</div>
+			</section>
+
 			{/* FAQ Section */}
 			<section className="py-16 bg-gray-50">
 				<div className="container">
@@ -288,3 +294,20 @@ export default function Home() {
 		</main>
 	);
 }
+
+const InstagramEmbed: React.FC = () => {
+	return (
+		<Card className="w-full mx-auto shadow-xl rounded-2xl overflow-hidden">
+			<CardContent className="p-0">
+				<div className="relative w-full h-0 pb-[90.25%] md:pb-[56.25%]">
+					{/* 16:9 ratio */}
+					<iframe
+						src="https://www.instagram.com/keshmedkorea/embed/"
+						className="absolute top-0 left-0 w-full h-full border-0"
+						title="Instagram Embed"
+					></iframe>
+				</div>
+			</CardContent>
+		</Card>
+	);
+};
