@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
@@ -26,6 +26,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
+import ReCAPTCHA from "react-google-recaptcha";
+import { useTranslations } from "next-intl";
 
 type ContactFormValues = {
 	name: string;
@@ -45,6 +47,7 @@ export function ContactModal({
 	interest?: string;
 }) {
 	const [open, setOpen] = useState(false);
+	const t = useTranslations("homePage");
 
 	const defaultValues: Partial<ContactFormValues> = {
 		name: "",
@@ -58,28 +61,75 @@ export function ContactModal({
 		defaultValues,
 	});
 
-	function onSubmit(data: ContactFormValues) {
-		// In a real application, you would send this data to your backend
-		console.log(data);
+	const recaptchaRef = useRef<ReCAPTCHA>(null);
+	const [loading, setLoading] = useState(false);
+	const [success, setSuccess] = useState(false);
 
-		toast({
-			title: "Contact request submitted",
-			description: "We'll get back to you as soon as possible.",
-		});
+	const onSubmit = async (data: any) => {
+		if (!recaptchaRef.current) {
+			alert("ReCAPTCHA не инициализировалась.");
+			return;
+		}
 
-		// Close the modal after submission
-		setOpen(false);
+		try {
+			setLoading(true);
 
-		// Reset the form
-		form.reset();
-	}
+			// Получение ReCAPTCHA токена
+			const token = await recaptchaRef.current.executeAsync();
+			recaptchaRef.current.reset();
+
+			// Таймаут: 10 секунд
+			const controller = new AbortController();
+			const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+			const res = await fetch(
+				process.env.NEXT_PUBLIC_BASE_URL + "/lead-info-prod",
+				{
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ ...data, recaptchaToken: token }),
+					signal: controller.signal,
+				}
+			);
+
+			clearTimeout(timeoutId);
+			setLoading(false);
+
+			if (res.ok) {
+				setSuccess(true);
+				form.reset();
+			} else {
+				const errorText = await res.text();
+				console.error("Ошибка сервера:", errorText);
+				toast({
+					title: "Ошибка при отправке",
+					description: "Попробуйте позже.",
+				});
+			}
+		} catch (error: any) {
+			setLoading(false);
+
+			if (error.name === "AbortError") {
+				toast({
+					title: "Время ожидания истекло.",
+					description: "Проверьте интернет и попробуйте снова.",
+				});
+			} else {
+				console.error("Сетевая ошибка:", error?.message || error);
+				toast({
+					title: "Не удалось отправить заявку.",
+					description: "Возможно, проблема с сетью.",
+				});
+			}
+		}
+	};
 
 	return (
 		<Dialog open={open} onOpenChange={setOpen}>
 			<DialogTrigger asChild>
 				{children || <Button variant="default">{buttonText}</Button>}
 			</DialogTrigger>
-			<DialogContent className="sm:max-w-[500px]">
+			<DialogContent className="sm:max-w-[500px] overflow-hidden">
 				<DialogHeader>
 					<DialogTitle>Contact Us</DialogTitle>
 					<DialogDescription>
@@ -160,6 +210,11 @@ export function ContactModal({
 								)}
 							/>
 						)}
+						<ReCAPTCHA
+							ref={recaptchaRef}
+							sitekey="6Lei7iArAAAAAJUS0IyamXj5YAGTg2u1pZzg6ywn"
+							size="invisible"
+						/>
 						<FormField
 							control={form.control}
 							name="message"
@@ -178,7 +233,7 @@ export function ContactModal({
 								</FormItem>
 							)}
 						/>
-						<div className="flex justify-end gap-2 pt-2">
+						<div className="flex justify-start gap-2 pt-2">
 							<Button
 								type="button"
 								variant="outline"
@@ -186,7 +241,16 @@ export function ContactModal({
 							>
 								Cancel
 							</Button>
-							<Button type="submit">Submit</Button>
+							<Button disabled={loading} type="submit">
+								{loading
+									? t("contactUs.messageForm.loading")
+									: t("contactUs.messageForm.sendButton")}
+							</Button>
+							{success && (
+								<p className="text-green-600">
+									Заявка отправлена!
+								</p>
+							)}
 						</div>
 					</form>
 				</Form>
